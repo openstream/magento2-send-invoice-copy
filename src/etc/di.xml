@@ -1,3 +1,16 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * @author      Oleh Kravets <oleh@openstream.ch>
+ * @copyright   Copyright (c) 2020 Openstream Internet Solutions  (https://www.openstream.ch)
+ * @license     MIT License
+ */
+-->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Sales\Block\Adminhtml\Order\Invoice\Create\Items">
+        <plugin name="openstreamSalesEmailAddAdminCheckbox" type="Openstream\SalesEmailCopy\Plugin\Sales\Block\Adminhtml\Order\Invoice\Create\ItemsPlugin" sortOrder="1"/>
+    </type>
+    <type name="Magento\Sales\Block\Adminhtml\Order\Invoice\View">
+        <plugin name="openstreamAddAdminEmailButton" type="Openstream\SalesEmailCopy\Plugin\Sales\Block\Adminhtml\Order\Invoice\ViewPlugin"/>
+    </type>
 </config>

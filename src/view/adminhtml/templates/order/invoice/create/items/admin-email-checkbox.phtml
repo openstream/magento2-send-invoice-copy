@@ -1,0 +1,18 @@
+<?php
+/**
+ * @author      Oleh Kravets <oleh@openstream.ch>
+ * @copyright   Copyright (c) 2020 Openstream Internet Solutions  (https://www.openstream.ch)
+ * @license     MIT License
+ */
+/**
+ * @var $block \Magento\Framework\View\Element\Template
+ */
+?>
+
+<div class="admin__field admin__field-option field-email">
+    <input id="send_admin_email" name="invoice[send_admin_email]" value="1" type="checkbox"
+           class="admin__control-checkbox" />
+    <label class="admin__field-label" for="send_admin_email">
+        <?= $block->escapeHtml(__('Email Copy of Invoice to Admin')) ?>
+    </label>
+</div>
