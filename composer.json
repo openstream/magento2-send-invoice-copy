@@ -1,0 +1,14 @@
+{
+  "name": "openstream/magento2-sales-email-copy",
+  "type": "magento2-module",
+  "license": "MIT",
+  "description": "",
+  "autoload": {
+    "files": [
+      "src/registration.php"
+    ],
+    "psr-4": {
+      "Openstream\\SalesEmailCopy\\": "src"
+    }
+  }
+}
