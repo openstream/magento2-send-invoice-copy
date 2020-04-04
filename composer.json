@@ -1,5 +1,5 @@
 {
-  "name": "openstream/magento2-sales-email-copy",
+  "name": "openstream/magento2-send-invoice-copy",
   "type": "magento2-module",
   "license": "MIT",
   "description": "",
@@ -8,7 +8,7 @@
       "src/registration.php"
     ],
     "psr-4": {
-      "Openstream\\SalesEmailCopy\\": "src"
+      "Openstream\\SendInvoiceCopy\\": "src"
     }
   }
 }

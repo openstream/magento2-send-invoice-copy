@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Oleh Kravets <oleh@openstream.ch>
+ * @copyright   Copyright (c) 2020 Openstream Internet Solutions  (https://www.openstream.ch)
+ * @license     MIT License
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="sales_email">
+            <group id="invoice">
+                <field id="enable_email_to_admin" translate="label comment" type="select" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="100">
+                    <label>Enable Email to Admin</label>
+                    <comment><![CDATA[Enables the option to send an email to admin only]]></comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="admin_email" translate="label comment" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="110">
+                    <label>Admin Email Address</label>
+                    <comment><![CDATA[Can be a comma-separated list]]></comment>
+                    <depends>
+                        <field id="enable_email_to_admin">1</field>
+                    </depends>
+                    <validate>required-entry</validate>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

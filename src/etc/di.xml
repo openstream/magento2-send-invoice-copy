@@ -8,9 +8,20 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="Magento\Sales\Block\Adminhtml\Order\Invoice\Create\Items">
-        <plugin name="openstreamSalesEmailAddAdminCheckbox" type="Openstream\SalesEmailCopy\Plugin\Sales\Block\Adminhtml\Order\Invoice\Create\ItemsPlugin" sortOrder="1"/>
+        <plugin name="openstreamSalesEmailAddAdminCheckbox" type="Openstream\SendInvoiceCopy\Plugin\Sales\Block\Adminhtml\Order\Invoice\Create\ItemsPlugin" sortOrder="1"/>
     </type>
     <type name="Magento\Sales\Block\Adminhtml\Order\Invoice\View">
-        <plugin name="openstreamAddAdminEmailButton" type="Openstream\SalesEmailCopy\Plugin\Sales\Block\Adminhtml\Order\Invoice\ViewPlugin"/>
+        <plugin name="openstreamAddAdminEmailButton" type="Openstream\SendInvoiceCopy\Plugin\Sales\Block\Adminhtml\Order\Invoice\ViewPlugin"/>
     </type>
+    <type name="Magento\Sales\Model\Order\Email\Sender\InvoiceSender">
+        <arguments>
+            <argument name="senderBuilderFactory" xsi:type="object">Openstream\SendInvoiceCopy\Model\Order\Email\SenderBuilderFactory</argument>
+            <argument name="identityContainer" xsi:type="object">Openstream\SendInvoiceCopy\Model\Order\Email\Container\InvoiceIdentity</argument>
+        </arguments>
+    </type>
+    <virtualType name="Openstream\SendInvoiceCopy\Model\Order\Email\SenderBuilderFactory" type="Magento\Sales\Model\Order\Email\SenderBuilderFactory">
+        <arguments>
+            <argument name="instanceName" xsi:type="string">Openstream\SendInvoiceCopy\Model\Order\Email\SenderBuilder</argument>
+        </arguments>
+    </virtualType>
 </config>

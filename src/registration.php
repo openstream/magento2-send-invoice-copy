@@ -7,4 +7,4 @@
 
 use Magento\Framework\Component\ComponentRegistrar;
 
-ComponentRegistrar::register(ComponentRegistrar::MODULE, 'Openstream_SalesEmailCopy', __DIR__);
+ComponentRegistrar::register(ComponentRegistrar::MODULE, 'Openstream_SendInvoiceCopy', __DIR__);

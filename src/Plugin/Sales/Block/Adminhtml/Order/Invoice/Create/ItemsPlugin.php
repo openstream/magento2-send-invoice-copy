@@ -5,22 +5,28 @@
  * @license     MIT License
  */
 
-namespace Openstream\SalesEmailCopy\Plugin\Sales\Block\Adminhtml\Order\Invoice\Create;
+namespace Openstream\SendInvoiceCopy\Plugin\Sales\Block\Adminhtml\Order\Invoice\Create;
 
 use Magento\Framework\View\Element\TemplateFactory;
 use Magento\Sales\Block\Adminhtml\Order\Invoice\Create\Items;
+use Openstream\SendInvoiceCopy\Helper\Config;
 
 class ItemsPlugin
 {
-    const CHECKBOX_TEMPLATE = 'Openstream_SalesEmailCopy::order/invoice/create/items/admin-email-checkbox.phtml';
+    const CHECKBOX_TEMPLATE = 'Openstream_SendInvoiceCopy::order/invoice/create/items/admin-email-checkbox.phtml';
     /**
      * @var TemplateFactory
      */
     private $templateFactory;
+    /**
+     * @var Config
+     */
+    private $config;
 
-    public function __construct(TemplateFactory $templateFactory)
+    public function __construct(TemplateFactory $templateFactory, Config $config)
     {
         $this->templateFactory = $templateFactory;
+        $this->config = $config;
     }
 
     /**
@@ -30,6 +36,11 @@ class ItemsPlugin
      */
     public function afterFetchView(Items $subject, $result): string
     {
+        $storeId = $subject->getInvoice()->getStoreId();
+        if (!$this->config->isInvoiceAdminEmailEnabled($storeId)) {
+            return $result;
+        }
+
         /** @var \Magento\Framework\View\Element\Template $checkboxBlock */
         $checkboxBlock = $this->templateFactory->create();
         $checkboxBlock->setTemplate(self::CHECKBOX_TEMPLATE);
