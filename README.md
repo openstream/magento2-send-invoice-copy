@@ -11,7 +11,7 @@ The module provides the possibility to send an invoice email copy without sendin
 ### Details
 
 The module does not change the default Magento behaviour but offers two additional elements:
- - a checkbox when creating an invoice `Email Copy Only (Do not sent to customer)`
+ - a checkbox when creating an invoice `Email Copy Only (Do not send to customer)`
  - a button on the invoice view page `Send Email Copy`
  
  Both options send emails to the addresses specified under `Stores->Configuration->Sales:Sales Emails->Invoices->Send Invoice Email Copy To`, regardless of which method has been selected, Bcc or separate email.
