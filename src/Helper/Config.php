@@ -8,12 +8,11 @@
 namespace Openstream\SendInvoiceCopy\Helper;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Sales\Model\Order\Email\Container\InvoiceIdentity;
 use Magento\Store\Model\ScopeInterface;
 
 class Config
 {
-    const CONFIG_PATH_INVOICE_EMAIL_ENABLE = 'sales_email/invoice/enable_email_to_admin';
-    const CONFIG_PATH_INVOICE_EMAIL = 'sales_email/invoice/admin_email';
     /**
      * @var ScopeConfigInterface
      */
@@ -28,29 +27,13 @@ class Config
      * @param int|null $storeId
      * @return bool
      */
-    public function isInvoiceAdminEmailEnabled($storeId = null)
+    public function isInvoiceCopyEnabled($storeId = null)
     {
-        return (bool) $this->getConfigValue(self::CONFIG_PATH_INVOICE_EMAIL_ENABLE, $storeId);
-    }
-
-    /**
-     * @param int|null $storeId
-     * @return string[]
-     */
-    public function getInvoiceAdminEmails($storeId = null)
-    {
-        return array_filter(
-            array_map('trim', explode(',', $this->getConfigValue(self::CONFIG_PATH_INVOICE_EMAIL, $storeId)))
+        $copyTo = $this->scopeConfig->getValue(
+            InvoiceIdentity::XML_PATH_EMAIL_COPY_TO,
+            ScopeInterface::SCOPE_STORES,
+            $storeId
         );
-    }
-
-    /**
-     * @param string $path
-     * @param int|null $storeId
-     * @return mixed
-     */
-    private function getConfigValue($path, $storeId)
-    {
-        return $this->scopeConfig->getValue($path, ScopeInterface::SCOPE_STORES, $storeId);
+        return !empty(array_filter(array_map('trim', explode(',', $copyTo))));
     }
 }

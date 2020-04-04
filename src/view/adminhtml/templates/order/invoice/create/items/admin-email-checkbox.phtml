@@ -10,9 +10,12 @@
 ?>
 
 <div class="admin__field admin__field-option field-email">
-    <input id="send_admin_email" name="invoice[send_admin_email]" value="1" type="checkbox"
+    <input id="send_email_copy_only" name="invoice[send_email_copy_only]" value="1" type="checkbox"
            class="admin__control-checkbox" />
-    <label class="admin__field-label" for="send_admin_email">
-        <?= $block->escapeHtml(__('Email Copy of Invoice to Admin')) ?>
+    <label class="admin__field-label" for="send_email_copy_only">
+        <?= $block->escapeHtml(__('Email Copy Only (Do not sent to customer)')) ?>
     </label>
 </div>
+<script type="text/javascript">
+    
+</script>

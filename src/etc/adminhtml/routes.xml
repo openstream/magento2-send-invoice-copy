@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @author      Oleh Kravets <oleh@openstream.ch>
+ * @copyright   Copyright (c) 2020 Openstream Internet Solutions  (https://www.openstream.ch)
+ * @license     MIT License
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="admin">
+        <route id="sendinvoicecopy" frontName="sendinvoicecopy">
+            <module before="Magento_Backend" name="Openstream_SendInvoiceCopy"/>
+        </route>
+    </router>
+</config>

@@ -13,15 +13,32 @@
     <type name="Magento\Sales\Block\Adminhtml\Order\Invoice\View">
         <plugin name="openstreamAddAdminEmailButton" type="Openstream\SendInvoiceCopy\Plugin\Sales\Block\Adminhtml\Order\Invoice\ViewPlugin"/>
     </type>
-    <type name="Magento\Sales\Model\Order\Email\Sender\InvoiceSender">
+<!--    <type name="Magento\Sales\Model\Order\Email\Sender\InvoiceSender">-->
+<!--        <arguments>-->
+<!--            <argument name="senderBuilderFactory" xsi:type="object">Openstream\SendInvoiceCopy\Model\Order\Email\SenderBuilderFactory</argument>-->
+<!--            <argument name="identityContainer" xsi:type="object">Openstream\SendInvoiceCopy\Model\Order\Email\Container\InvoiceIdentity</argument>-->
+<!--        </arguments>-->
+<!--    </type>-->
+<!--    <virtualType name="Openstream\SendInvoiceCopy\Model\Order\Email\SenderBuilderFactory" type="Magento\Sales\Model\Order\Email\SenderBuilderFactory">-->
+<!--        <arguments>-->
+<!--            <argument name="instanceName" xsi:type="string">Openstream\SendInvoiceCopy\Model\Order\Email\SenderBuilder</argument>-->
+<!--        </arguments>-->
+<!--    </virtualType>-->
+    <type name="Magento\Sales\Controller\Adminhtml\Order\Invoice\Save">
         <arguments>
-            <argument name="senderBuilderFactory" xsi:type="object">Openstream\SendInvoiceCopy\Model\Order\Email\SenderBuilderFactory</argument>
-            <argument name="identityContainer" xsi:type="object">Openstream\SendInvoiceCopy\Model\Order\Email\Container\InvoiceIdentity</argument>
+            <argument name="invoiceSender" xsi:type="object">Openstream\SendInvoiceCopy\Model\Order\Email\Sender\InvoiceSender</argument>
         </arguments>
     </type>
-    <virtualType name="Openstream\SendInvoiceCopy\Model\Order\Email\SenderBuilderFactory" type="Magento\Sales\Model\Order\Email\SenderBuilderFactory">
-        <arguments>
-            <argument name="instanceName" xsi:type="string">Openstream\SendInvoiceCopy\Model\Order\Email\SenderBuilder</argument>
-        </arguments>
-    </virtualType>
+<!--    <type name="Openstream\SendInvoiceCopy\Model\Order\InvoiceNotifier">-->
+<!--        <arguments>-->
+<!--            <argument name="sender" xsi:type="object">Openstream\SendInvoiceCopy\Model\Order\Email\Sender\InvoiceSender</argument>-->
+<!--        </arguments>-->
+<!--    </type>-->
+    <type name="Openstream\SendInvoiceCopy\Model\Order\Email\Sender\InvoiceSender">
+<!--        <arguments>-->
+<!--            <argument name="senderBuilderFactory" xsi:type="object">Openstream\SendInvoiceCopy\Model\Order\Email\SenderBuilderFactory</argument>-->
+<!--            <argument name="identityContainer" xsi:type="object">Openstream\SendInvoiceCopy\Model\Order\Email\Container\InvoiceIdentity</argument>-->
+<!--        </arguments>-->
+        <plugin name="setEmailCopyOInlyFromRequest" type="Openstream\SendInvoiceCopy\Plugin\Model\Order\Email\Sender\InvoiceSenderPlugin" />
+    </type>
 </config>

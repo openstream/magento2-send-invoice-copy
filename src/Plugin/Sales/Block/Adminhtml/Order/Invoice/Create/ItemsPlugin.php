@@ -37,7 +37,7 @@ class ItemsPlugin
     public function afterFetchView(Items $subject, $result): string
     {
         $storeId = $subject->getInvoice()->getStoreId();
-        if (!$this->config->isInvoiceAdminEmailEnabled($storeId)) {
+        if (!$this->config->isInvoiceCopyEnabled($storeId)) {
             return $result;
         }
 

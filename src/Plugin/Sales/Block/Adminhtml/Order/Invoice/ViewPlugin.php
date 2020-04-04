@@ -32,15 +32,14 @@ class ViewPlugin
     public function beforeSetLayout(View $view, LayoutInterface $layout)
     {
         $storeId = $view->getInvoice()->getStoreId();
-        if ($this->config->isInvoiceAdminEmailEnabled($storeId)) {
-            $message = __('Are you sure you want to do send an invoice email to Admin?');
-            // todo: adjust URL
-            $url = $view->getUrl('/openstream/controller/action/', ['id' => $view->getInvoice()->getId()]);
+        if ($this->config->isInvoiceCopyEnabled($storeId)) {
+            $message = __('Are you sure you want to do send an invoice email copy?');
+            $url = $view->getUrl('sendinvoicecopy/invoice/emailCopy', ['invoice_id' => $view->getInvoice()->getId()]);
 
             $view->addButton(
                 'send_email_admin',
                 [
-                    'label'   => __('Send Email to Admin'),
+                    'label'   => __('Send Email Copy'),
                     'class'   => 'send',
                     'onclick' => "confirmSetLocation('{$message}', '{$url}')"
                 ]
